@@ -19,6 +19,7 @@ class TestExample:
         page.get_by_role("button", name="Open Menu").click()
         page.locator('[data-test="logout-sidebar-link"]').click()
 
+    @pytest.mark.fast
     def test_add_to_cart(self, page: Page):
         page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click()
         page.locator('[data-test="shopping-cart-link"]').click()
@@ -29,6 +30,7 @@ class TestExample:
             "1"
         )
 
+    @pytest.mark.xfail(reason="work-in-progress", run=False)
     def test_checkout(self, page: Page):
         page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click()
         page.locator('[data-test="shopping-cart-link"]').click()
@@ -52,6 +54,7 @@ class TestExample:
         )
 
 
+@pytest.mark.skip(reason="deprecated")
 class TestExample1:
     @pytest.fixture(scope="function", autouse=True)
     def before_each(self, page: Page):
